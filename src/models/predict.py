@@ -5,8 +5,7 @@ import pickle
 
 
 def load_model():
-    #Load best params
-    # open a file, where you stored the pickled data
+    # open the saved pkl model
     model_pkl = open('models/random_forest_regressor.pkl', 'rb')
     model = pickle.load(model_pkl)
     model_pkl.close()
@@ -18,7 +17,7 @@ def model_predict(X_test,loaded_model):
 
 def model_score(X_test,y_test,loaded_model):    
     score = loaded_model.score(X_test,y_test)
-    return score
+    return {"R2":score}
 
 
 def save_predictions(predictions):

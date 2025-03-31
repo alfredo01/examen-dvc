@@ -59,13 +59,7 @@ def save_parameters(parameters, output_folderpath):
                 pickle.dump(params, file)
 
 
-def save_model(model, output_folderpath):
-    # Save dataframes to their respective output file paths
-    for model, filename in zip([model], ['random_forest_regressor.pkl']):
-        output_filepath = os.path.join(output_folderpath, filename)
-        if check_existing_file(output_filepath):
-            with open(output_filepath, 'wb') as file:
-                pickle.dump(model, file)
+
             
 
 if __name__ == '__main__':
@@ -78,9 +72,9 @@ if __name__ == '__main__':
         'max_depth': [None, 10, 20],
         'min_samples_split': [2, 5, 10]
 }
-    best_model,best_params=grid_search(regressor,param_grid,cv)
+    best_params=grid_search(regressor,param_grid,cv)
     save_parameters(best_params,"models")
-    save_model(best_model,"models")
+    #save_model(best_model,"models")
 
 
 
