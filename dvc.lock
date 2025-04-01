@@ -1,0 +1,53 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/data/make_dataset.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: c5b0254fb65c494b72ccba32bfb8a553.dir
+      size: 333782
+      nfiles: 2
+    - path: src/data/make_dataset.py
+      hash: md5
+      md5: a289983b0455b07502de21fbc78d5987
+      size: 2568
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: ea5e20a3ece6ba76477bdc8f954ad90b.dir
+      size: 294499
+      nfiles: 4
+  train:
+    cmd: python src/models/train_model.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: ea5e20a3ece6ba76477bdc8f954ad90b.dir
+      size: 294499
+      nfiles: 4
+    - path: src/models/train_model.py
+      hash: md5
+      md5: 8a58bce6683b3bdac0a6a1ab2f5238f5
+      size: 1600
+    outs:
+    - path: models/random_forest_regressor.pkl
+      hash: md5
+      md5: d1812e43c9dd4d9032977361e9a8f6dc
+      size: 21807715
+  evaluation:
+    cmd: python src/models/predict.py
+    deps:
+    - path: models/random_forest_regressor.pkl
+      hash: md5
+      md5: d1812e43c9dd4d9032977361e9a8f6dc
+      size: 21807715
+    - path: src/models/predict.py
+      hash: md5
+      md5: c71948948e9683626a10ff1f52940859
+      size: 1095
+    outs:
+    - path: metrics/scores.json
+      hash: md5
+      md5: f211b07399b0a82dcdcbc68e2e35091e
+      size: 34

@@ -1,0 +1,23 @@
+stages:
+  prepare:
+    cmd: python src/data/make_dataset.py
+    deps:
+    - data/raw
+    - src/data/make_dataset.py
+    outs:
+    - data/processed
+  train:
+    cmd: python src/models/train_model.py
+    deps:
+    - data/processed
+    - src/models/train_model.py
+    outs:
+    - models/random_forest_regressor.pkl
+  evaluation:
+    cmd: python src/models/predict.py
+    deps:
+    - models/random_forest_regressor.pkl
+    - src/models/predict.py
+    metrics:
+    - metrics/scores.json:
+        cache: false
