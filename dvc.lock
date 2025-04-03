@@ -10,10 +10,10 @@ stages:
       nfiles: 2
     - path: src/data/make_dataset.py
       hash: md5
-      md5: a289983b0455b07502de21fbc78d5987
+      md5: 8c65dda54ed6af4cffae86168f310336
       size: 2568
     outs:
-    - path: data/processed
+    - path: data/processed/split
       hash: md5
       md5: ea5e20a3ece6ba76477bdc8f954ad90b.dir
       size: 294499
@@ -51,3 +51,21 @@ stages:
       hash: md5
       md5: f211b07399b0a82dcdcbc68e2e35091e
       size: 34
+  standardize:
+    cmd: python src/data/standardize.py
+    deps:
+    - path: data/processed/split
+      hash: md5
+      md5: ea5e20a3ece6ba76477bdc8f954ad90b.dir
+      size: 294499
+      nfiles: 4
+    - path: src/data/standardize.py
+      hash: md5
+      md5: a6578dccc6fa445187bb6301d765068d
+      size: 2470
+    outs:
+    - path: data/processed/standardized
+      hash: md5
+      md5: 6e8e565f5d11609c75c00efae439d61c.dir
+      size: 284302
+      nfiles: 2
