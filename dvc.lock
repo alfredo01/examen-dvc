@@ -88,3 +88,21 @@ stages:
       md5: fa1e102a37c02b094a40a54083fe6172.dir
       size: 69
       nfiles: 1
+  evaluate:
+    cmd: python src/models/predict.py
+    deps:
+    - path: models/model
+      hash: md5
+      md5: 2aac81adc66f9bc7cd797553a4e3bc47.dir
+      size: 21808435
+      nfiles: 1
+    - path: src/models/predict.py
+      hash: md5
+      md5: f43f1e6f9788fb40eafa734f808928e2
+      size: 1200
+    outs:
+    - path: metrics
+      hash: md5
+      md5: 9596d762514e0b317f3235bbe5273782.dir
+      size: 34
+      nfiles: 1

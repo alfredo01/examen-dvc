@@ -27,3 +27,10 @@ stages:
     - src/models/train_model.py
     outs:
     - models/model
+  evaluate:
+    cmd: python src/models/predict.py
+    deps:
+    - models/model
+    - src/models/predict.py
+    outs:
+    - metrics
