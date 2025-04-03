@@ -19,4 +19,11 @@ stages:
     - data/processed/standardized
     - src/models/grid_search.py
     outs:
-    - data/models
+    - models/params
+  train:
+    cmd: python src/models/train_model.py
+    deps:
+    - models/params
+    - src/models/train_model.py
+    outs:
+    - models/model

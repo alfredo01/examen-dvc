@@ -21,20 +21,21 @@ stages:
   train:
     cmd: python src/models/train_model.py
     deps:
-    - path: data/processed
+    - path: models/params
       hash: md5
-      md5: ea5e20a3ece6ba76477bdc8f954ad90b.dir
-      size: 294499
-      nfiles: 4
+      md5: fa1e102a37c02b094a40a54083fe6172.dir
+      size: 69
+      nfiles: 1
     - path: src/models/train_model.py
       hash: md5
-      md5: 8a58bce6683b3bdac0a6a1ab2f5238f5
-      size: 1600
+      md5: 9823de34ebbf477fdb6deffe8c2f563f
+      size: 1712
     outs:
-    - path: models/random_forest_regressor.pkl
+    - path: models/model
       hash: md5
-      md5: d1812e43c9dd4d9032977361e9a8f6dc
-      size: 21807715
+      md5: 2aac81adc66f9bc7cd797553a4e3bc47.dir
+      size: 21808435
+      nfiles: 1
   evaluation:
     cmd: python src/models/predict.py
     deps:
@@ -69,3 +70,21 @@ stages:
       md5: 6e8e565f5d11609c75c00efae439d61c.dir
       size: 284302
       nfiles: 2
+  grid_search:
+    cmd: python src/models/grid_search.py
+    deps:
+    - path: data/processed/standardized
+      hash: md5
+      md5: 6e8e565f5d11609c75c00efae439d61c.dir
+      size: 284302
+      nfiles: 2
+    - path: src/models/grid_search.py
+      hash: md5
+      md5: 116fffc4c6cd1c74d8b6dbcaaa5b48b0
+      size: 2424
+    outs:
+    - path: models/params
+      hash: md5
+      md5: fa1e102a37c02b094a40a54083fe6172.dir
+      size: 69
+      nfiles: 1
