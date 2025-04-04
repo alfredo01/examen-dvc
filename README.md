@@ -14,8 +14,9 @@ Dans ce dépôt vous trouverez l'architecture proposé pour mettre en place la s
 │   └── params
 ├── notebooks
 └── src
-    ├── data
-    └── models
+│    ├── data
+│    └── models
+└── README.md.py
         
         
 ```
