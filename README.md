@@ -1,17 +1,23 @@
 # Examen DVC et Dagshub
 Dans ce dépôt vous trouverez l'architecture proposé pour mettre en place la solution de l'examen. 
 
-```bash       
-├── examen_dvc          
-│   ├── data       
-│   │   ├── processed      
-│   │   └── raw       
-│   ├── metrics       
-│   ├── models      
-│   │   ├── data      
-│   │   └── models        
-│   ├── src       
-│   └── README.md.py       
+```bash
+
+├── data
+│   ├── processed
+│   │   ├── split
+│   │   └── standardized
+│   └── raw
+├── metrics
+├── models
+│   ├── model
+│   └── params
+├── notebooks
+└── src
+    ├── data
+    └── models
+        
+        
 ```
 N'hésitez pas à rajouter les dossiers ou les fichiers qui vous semblent pertinents.
 
